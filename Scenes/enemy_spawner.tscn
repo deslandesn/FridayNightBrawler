@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj5eradkbue6w"]
+
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1_wgjph"]
+[ext_resource type="PackedScene" uid="uid://c503jo88t5hh3" path="res://Scenes/enemy_template.tscn" id="2_y8mqu"]
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_wgjph")
+enemy_scene = ExtResource("2_y8mqu")
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14.8)
+
+[node name="SpawnPoint2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, -0.699999)
+
+[node name="SpawnPoint3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8, 0, -8.3)
+
+[node name="SpawnPoint4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0, -15.2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://rso2wygpofn2"]
+
+[ext_resource type="Script" path="res://Scripts/UIController.gd" id="1_jrnhp"]
+
+[sub_resource type="Gradient" id="Gradient_ttfle"]
+offsets = PackedFloat32Array(0, 0.548387, 0.848387, 1)
+colors = PackedColorArray(0.0451613, 0, 0, 0.0451613, 1, 0, 0, 0.0666667, 1, 0, 0, 0.321569, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2tgmr"]
+gradient = SubResource("Gradient_ttfle")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jrnhp")
+
+[node name="DamageFlash" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2tgmr")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.5
+offset_right = 348.5
+offset_bottom = 88.0
+grow_horizontal = 2
+value = 100.0
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
